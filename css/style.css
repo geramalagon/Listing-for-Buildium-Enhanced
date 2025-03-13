@@ -1,0 +1,494 @@
+/*
+* Style File for Listings for Buildium PRO plugin
+*/
+/* General */
+.bldm-column{
+	float: left;
+	margin: 0 1% 40px;
+	padding: 0 1%
+}
+.bldm-two-fifth{
+	width: 38%;
+}
+.bldm-three-fifth{
+	width: 58%;
+}
+.bldm-prmry-btn{
+	color: #fff;
+    background: rgb(89, 143, 205);
+    padding: 7px 20px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* All Listings page */
+.bldm-all-listings.bldm-section-inner {
+	padding: 1% 0;
+  }
+.bldm-main-listings-page{
+	padding: 1em 0;
+}
+.bldm-listing-items-grp {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+  }
+.bldm-main-listings-page .bldm-listing-item{
+	position: relative;
+	transition: 0.3s;
+	width: 32.5%;
+    float: left;
+    margin: 0 0 1% 0;
+	padding: 0;
+	min-height: 460px;
+}
+.bldm-main-listings-page .bldm-listing-item img {
+	width: 100%;
+	height: 275px;
+	display: block;
+}
+
+/* Adjusting the layout of the search filters */
+.bldm-listing-filters form {
+    display: flex; /* Makes filters inline */
+    flex-wrap: nowrap; /* Prevents wrapping */
+    justify-content: space-between; /* Distributes filters evenly */
+    align-items: center; /* Vertically aligns filters */
+    padding: 20px; /* Adds some spacing */
+	gap: 20px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for filter inputs and selects */
+.bldm-listing-filters input, 
+.bldm-listing-filters select {
+    min-width: 120px; /* Ensures all inputs have consistent size */
+    padding: 8px; /* Adds spacing inside the inputs */
+    border: 1px solid #ccc; /* Adds a light border */
+    border-radius: 5px; /* Makes corners rounded */
+    font-size: 14px; /* Standardizes text size */
+}
+
+/* Styling for toggle buttons for Beds and Baths */
+.bldm-listing-filters .filter-toggle-group {
+    display: flex; /* Align buttons horizontally */
+    gap: 5px; /* Adds spacing between buttons */
+}
+
+.bldm-listing-filters .filter-toggle-group button {
+    padding: 8px 15px;
+    border: 1px solid #ccc; /* Border for buttons */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* Default background */
+    color: #333; /* Default text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bldm-listing-filters .filter-toggle-group button.active {
+    background-color: #1C4AA1; /* Active state background */
+    color: #fff; /* Active state text color */
+    border-color: #1C4AA1; /* Active state border color */
+}
+
+.bldm-listing-filters .filter-toggle-group button:hover {
+    background-color: #E5E5E5; /* Hover background */
+    color: #333; /* Hover text color */
+}
+
+/* Search button styling */
+.bldm-listing-filters input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #1C4AA1;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.bldm-listing-filters input[type="submit"]:hover {
+    transform: translateY(-3px); /* Moves button upward by 3 pixels */
+}
+.bldm-main-listings-page .bldm-listing-item .bldm-list-img{
+	position: relative;
+}
+span.bldm-rent-price {
+	background: #ff6600;
+}
+.bldm-main-listings-page .bldm-listing-item span.bldm-rent-price, .bldm-main-listings-page .bldm-listing-item span.bldm-rent-price-off,
+.bldm-main-listings-page .bldm-listing-item span.bldm-lstng-avail, .bldm-main-listings-page .bldm-listing-item span.bldm-lstng-avail-off {
+	color: #fff;
+	padding: 5px 10px;
+	letter-spacing: 1px;
+	position: absolute;
+	left: 0px;
+	font-size: 18px;
+	bottom: 0px;
+}
+.bldm-main-listings-page .bldm-listing-item span.bldm-rent-price-off, .bldm-main-listings-page .bldm-listing-item span.bldm-lstng-avail-off{
+	position: relative;
+}
+.bldm-main-listings-page .bldm-listing-item span.bldm-lstng-avail, .bldm-main-listings-page .bldm-listing-item span.bldm-lstng-avail-off {
+	left: auto;
+	right: 0px;
+	text-transform: capitalize;
+}
+.bldm-main-listings-page .bldm-listing-item span.bldm-lstng-avail-off{
+	float: right;
+}
+.bldm-btns {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+  }
+.bldm-details {
+	padding: 15px;
+	background: rgba(89, 143, 205, 0.1);
+	margin-top: -7px;
+	padding-bottom: 40px;
+}
+h2.bldm-lstng_ttl {
+	font-size: 19px;
+  }
+h3.bldm-address {
+	font-size: 17px;
+	line-height: 2rem;
+	font-weight: 500;
+}
+.bldm-main-listings-page .bldm-listing-item img.bldm-bedimg, .bldm-main-listings-page .bldm-listing-item img.bldm-bathimg {
+	width: 16px;
+	height: auto;
+	margin: 0 5px;
+	display: inline;
+}
+.bldm-main-listings-page .bldm-listing-item .bldm-btns a {
+	color: #fff;
+	background: rgb(89, 143, 205);
+	padding: 8px 10px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: 0.3s;
+	text-decoration: none;
+	text-align: center;
+	width: 50%;
+	display: inline-block;
+  }
+.bldm-main-listings-page .bldm-listing-item .bldm-btns a:hover {
+	background: #444;
+}
+.bldm-listing-item:hover {
+	box-shadow: 0px 0px 10px 0px #ccc;
+}
+.bldm-listing-item:hover .bldm-details {
+	background: #fff;
+}
+
+/* SINGLE LISTING PAGE*/
+.bldm-sl-wrapper .sl-bldm-btns{
+	text-decoration: none;
+	display: block;
+	width: fit-content;
+	margin-bottom: 10px;
+	margin-left: auto;
+}
+/* Gallery CSS */
+.bldm-gallery{
+	position: relative;
+	text-align: center;
+}
+.bldm-gallery img{
+	max-height: 450px;
+	cursor: pointer;
+}
+.bldm-cursor {
+	cursor: pointer;
+}
+.bldm-prev,
+.bldm-next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 25px 15px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.bldm-next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.bldm-prev:hover, .bldm-next:hover {
+	background: rgba(255,255,255,0.5);
+	color: #444;
+	text-decoration: none;
+}
+.bldm-numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  background: rgb(0,0,0,0.5);
+}
+.bldm-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.bldm-imgcolumn {
+	float: left;
+	width: 20%;
+	margin: auto;
+}
+.bldm-imgcolumn .bldm-img-thumb{
+	opacity: 0.6;
+    height: 100px;
+    width: 95%;
+    margin: auto;
+}
+/* Listing details */
+.bldm-lst-dtls{
+	display: flex;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 25px;
+}
+.bldm-lst-dtls .bldm-details-left{
+	width: 60%;
+}
+.bldm-lst-dtls .bldm-details-right{
+	width: 40%;
+	text-align: right;
+}
+.bldm-address-hdng, .bldm-rent-hdng, .bldm-half h3{
+	margin-top: 0 !important;
+}
+.bldm-address-hdng a{
+	text-indent: -9999px;
+	display: inline-block;
+	line-height: 1;
+}
+.bldm-address-hdng a:before{
+	content: '';
+	background: url(../images/map-marker.png);
+	width: 32px;
+	height: 32px;
+	float: left;
+	margin: 0;
+	text-indent: 0;
+}
+.bldm-bed-bath-std{
+	padding: 0;
+}
+.bldm-bed-bath-std li{
+    list-style: none;
+}
+.bldm-bed-bath-std li::before {
+	background: url(../images/check.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 15px;
+	content: ' ';
+	position: absolute;
+	margin: 5px 0 0 -20px;
+  }
+  .bldm-details-right p:last-child {
+	display: flex;
+  justify-content: end;
+  }
+.bldm-half{
+	width: 50%;
+	float: left;
+}
+ul li.bldm-column.bldm-column--sm5{
+	width: 50%;
+	float: left;
+}
+ul li.bldm-column.bldm-column--sm5:nth-last-child(1):nth-child(odd) {
+	float: none;
+}
+.bldm-column .unit-detail__actions{
+	margin-top: 30px;
+}
+.bldm-column .unit-detail__actions a{
+	color: #fff;
+    background: rgb(89, 143, 205);
+    padding: 7px 20px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.bldm-column .unit-detail__actions a.btn--primary{
+	margin-right: 20px;
+}
+.sl-bldm-btns{
+	color: #fff;
+	background: rgb(89, 143, 205);
+	padding: 7px 20px;
+	margin-right: 5px;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	transition: 0.3s;
+}
+.sl-bldm-btns:hover{
+	text-decoration: none;
+	background: #444;
+}
+.bldm-bathimg, .bldm-bedimg{
+	width: 16px;
+	height: auto;
+	margin: 0 5px;
+	display: inline;
+}
+.bldm-details-right .bldm-rent-hdng{
+	color: #ff6600;
+    margin-bottom: 1rem;
+    padding: .5rem 0;
+    text-align: right;
+    border: none;
+    font-weight: bold;
+    font-size: 24px;
+	line-height: 1;
+}
+.bldm-details-right .bldm-rent-hdng .bldm-price-tag{
+	display: inline;
+    width: 24px;
+    vertical-align: bottom;
+}
+.bldm-details-right #bldm-avail-txt{
+	color: #3bb54a;
+	line-height: 1;
+}
+img.bldm-avail-now {
+	width: 15px;
+	height: 15px;
+}
+ul.bldm-bed-bath-std {
+	display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+/* Responsiveness */
+@media only screen and (max-width: 768px) {
+    .bldm-listing-filters h2 {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    .bldm-listing-filters input[type="submit"] {
+        padding: 5px 30px;
+        font-size: 16px;
+        margin: 0 10px;
+    }
+    .bldm-main-listings-page .bldm-all-listings {
+        padding: 1em;
+    }
+    .bldm-main-listings-page .bldm-listing-item {
+        width: 100%;
+    }
+
+    /* Mobile-specific Filters Adjustments */
+    /* .bldm-listing-filters form {
+        display: none; Hide the regular filters form */
+    }
+    .mobile-filters-button {
+        display: inline-block;
+        background-color: #1C4AA1; /* Matches your primary button color */
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%; /* Stretch button across screen */
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /* Modal Container */
+    .filters-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none; /* Hidden by default */
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .filters-modal[aria-hidden="false"] {
+        display: flex; /* Show modal when active */
+    }
+
+    /* Modal Content */
+    .filters-modal-content {
+        background: white;
+        width: 90%;
+        max-width: 500px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow-y: auto;
+        max-height: 90%;
+    }
+
+    /* Close Button */
+    .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Filter Input Styling in Modal */
+    .filters-modal-content .filter {
+        margin-bottom: 15px;
+    }
+
+    .filters-modal-content .filter input,
+    .filters-modal-content .filter .filter-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .filters-modal-content .filter-btn {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+
+    .filters-modal-content .filter-btn:hover {
+        background-color: #e0e0e0;
+    }
+
+    .filters-modal-content .bldm-prmry-btn {
+        width: 100%; /* Stretch the apply button */
+    }
+
+    /* Single Listing Adjustments */
+    .bldm-two-fifth,
+    .bldm-three-fifth {
+        width: 100%;
+        padding: 0 1em;
+    }
+}

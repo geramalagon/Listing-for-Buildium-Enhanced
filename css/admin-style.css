@@ -1,0 +1,188 @@
+/*
+* Style File for admin area
+*/
+.bldm-admin-fltrs span{
+	margin-right: 10px;
+}
+td .bldm-adm-more-options{
+	margin-left: 10px;
+}
+.wp-picker-container{
+	line-height: 2.5;
+}
+
+#bldm_slider_cnt{
+	width: 50px;
+	padding-right: 1px;
+}
+tr.slide_tr input, #bldm_slider_lst_page, #bldm_crsl_lst_page{
+    min-width: 300px;
+}
+
+#bldm_slider_sbmt{
+	height: 28px;
+	margin-left: 10px;
+}
+
+/* ------------- Update 03-2024 ---------- */
+.bldm_admin_top {
+	width: auto;
+	background: #154e6a;
+	padding: 50px;
+	color: #fff;
+	display: flex;
+  }
+  .bldm_admin_top p {
+	font-size: 25px;
+	margin: 0 auto;
+  }
+  .bldm_admin_top a {
+	background: #ededee;
+	padding: 12px;
+	margin-left: 5px;
+	text-decoration: none;
+	color: #154e6a;
+	line-height: 1;
+	transition: 0.3s;
+  }
+  .bldm_admin_top a:hover {
+	background: #70b37f;
+	color: #fff;
+  }
+  .bldm_slm_text_message {
+	background: #70b37f;
+	text-align: center;
+	padding: 5px;
+	color: #fff;
+	margin: 0;
+  }
+  .bldm_admin_key {
+	display: flex;
+	padding: 25px;
+  }
+  .bldm_admin_key label {
+	font-size: 18px;
+	line-height: 1.5;
+	width: 350px;
+  }
+  .bldm_lic_input {
+	width: calc(100% - 500px);
+	border: 1px solid #154e6a !important;
+	border-radius: 0 !important;
+	padding: 3px 10px !important;
+  }
+  .bldm_lic_btn {
+	position: absolute;
+	right: 70px;
+	margin: -62px 0 0 0;
+  }
+  .bldm_lic_btn input{
+	padding: 8.5px 20px;
+	background: #154e6a;
+	color: #fff;
+	border: none;
+	box-shadow: none;
+	cursor: pointer;
+  }
+  .bldm_admin_h1 {
+	background: #154e6a;
+	color: #fff;
+	padding: 5px 15px !important;
+	font-size: 20px !important;
+  }
+  .bldm_sctxt {
+	float: right;
+	padding: 4px 10px;
+	margin: 0;
+	color: #fff;
+  }
+  .form-table.bldm_url_config {
+	padding: 25px;
+  }
+  .bldm_url_config th {
+	width: 350px;
+	font-size: 18px;
+	line-height: 1.5;
+	font-weight: normal;
+	padding: 25px 0 25px 25px;
+  }
+  .bldm_url_config td{
+	padding: 0;
+  }
+  .bldm_url_config input {
+	min-width: 350px;
+	width: calc(100% - 175px);
+	border: 1px solid #154e6a !important;
+	border-radius: 0 !important;
+	padding: 3px 10px !important;
+  }
+  .bldm_config_save {
+	position: absolute;
+	right: 70px;
+	margin: -58px 0 0 0 !important;
+	padding: 0;
+  }
+  .bldm_config_save input{
+	padding: 4px 40px  !important;
+	background: #154e6a !important;
+	color: #fff !important;
+	border: none !important;
+	box-shadow: none !important;
+	cursor: pointer !important;
+	border-radius: 0 !important;
+	width: 110px !important;
+  }
+  .bldm_activate_btm {
+	position: absolute;
+	right: 70px;
+	margin: -62px 0 0 0 !important;
+	background: #154e6a !important;
+	color: #fff !important;
+	border: none !important;
+	box-shadow: none !important;
+	cursor: pointer !important;
+	border-radius: 0 !important;
+	width: 110px !important;
+	height: 36px;
+  }
+  .button.bldm_lic_cnfrm.bldm_activate_btm {
+	background: #70b37f !important;
+  }
+
+
+#bldm_banner_image{
+	display: flex;
+    flex-direction: column;
+    gap: 10px;
+	object-fit: cover;
+}
+
+#bldm_banner_image img{
+	display: flex;
+    flex-direction: column;
+    gap: 10px;
+	width: 520px;
+	height: 100px;
+	padding: 10px;
+}
+
+.bldm-banner-button{
+	width: 85px;
+    padding: 1px;
+    border-radius: 3px;
+    text-align: center;
+    border: 1px solid black;
+	color: black;
+	cursor: pointer;
+}
+
+
+.bldm_sub_heading_option input{
+	width: 60px;
+    margin-right: 7px;
+	
+}
+
+.bldm_sub_heading_option select{
+	margin-right: 7px;
+}
