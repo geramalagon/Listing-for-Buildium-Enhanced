@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Listings for Buildium Pro
 * Description: This is a Pro solution to your Buildium Listings integration with your WordPress website
-* Version: 2.0.3
+* Version: 2.0.4
 * Author: Listings for Buildium
 * Author URI: https://listingsforbuildium.com/
 * License: GPL+2
@@ -15,7 +15,7 @@ if ( ! defined('ABSPATH') ) {
    exit;
 }
 
-define ( 'BLDM_PRO_CURR_VER', '2.0.3' );
+define ( 'BLDM_PRO_CURR_VER', '2.0.4' );
 
 include_once dirname( __FILE__ ) . '/bldm_actdeact.php';
 register_activation_hook( __FILE__, array( 'Bldm_Actdeact', 'bldm_plugin_activate' ) );

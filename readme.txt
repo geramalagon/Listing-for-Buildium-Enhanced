@@ -3,14 +3,14 @@ Contributors: deepakkite, mrking2201
 Tags: buildium listings, buildium integration, Listings for buildium, rental listings, property listings, buildium property listings, rental, wordpress buildium plugin
 Requires at least: 6.0
 Tested up to: 6.5.2
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 Requires PHP: 7.4
 
 Gets your buildium property listings and display them in an interactive way instead of using iframe and gives you styling and SEO freedom.
 
 == Description ==
 
-“Listings for Buildium” is a simple light-weight property listing plugin that allows you to list your rental properties on your WordPress site from your Buildium account using a shortcode.
+"Listings for Buildium" is a simple light-weight property listing plugin that allows you to list your rental properties on your WordPress site from your Buildium account using a shortcode.
 
 The old iframe method of showing buildium rental listings does not allow site owners to customize the styling and improve SEO. This plugin will give you freedom to make any changes to the listings page.
 All your buildium rental listings will be shown in an interactive way which you can customize using CSS easily. You will get all the filters from your buildium listings page working as they work there.
@@ -41,6 +41,14 @@ Check our other plugin - [Listings for Appfolio](https://wordpress.org/plugins/l
 
 No, You don't need the free version anymore. Please deactivate the free plugin and activate the PRO version of the plugin.
 
+= Is the plugin mobile-friendly? =
+
+Yes! The plugin now features a fully responsive design with a mobile-optimized filter interface that adapts to different screen sizes.
+
+= Can I customize the Apply button link? =
+
+Yes, you can set a custom link for the Apply button in the plugin settings or override it using the filter hook.
+
 == Features ==
 
 * Easy setup for the plugin.
@@ -55,7 +63,9 @@ No, You don't need the free version anymore. Please deactivate the free plugin a
 
 * Gives you styling freedom.
 
-* Filters to search for rental listings.
+* Modern, user-friendly property filters with responsive design.
+
+* Mobile-optimized interface with a filter modal for small screens.
 
 * Interactive 3 column design for listings page.
 
@@ -85,6 +95,14 @@ No, You don't need the free version anymore. Please deactivate the free plugin a
 
 == Changelog ==
 
+= 2.0.4 =
+* 2024-03-13
+* Enhancement - Implemented modern property filter design with improved user experience.
+* Enhancement - Added full mobile responsiveness with a dedicated filter modal for small screens.
+* Enhancement - Improved filter layout with proper labeling and organization.
+* Fix - Fixed issue where details button color settings affected the apply button.
+* Fix - Improved apply button link customization.
+
 = 2.0.3 =
 * 2024-04-17
 * Fix - The Request Info link was pointing to wrong url.
@@ -105,3 +123,6 @@ No, You don't need the free version anymore. Please deactivate the free plugin a
 * Initial version of the plugin.
 
 == Upgrade Notice ==
+
+= 2.0.4 =
+This update brings a modern, mobile-friendly property filter design and fixes issues with button styling. Upgrade for an improved user experience on all devices.
