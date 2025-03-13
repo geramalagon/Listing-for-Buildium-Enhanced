@@ -7,7 +7,7 @@ if ( ! defined('ABSPATH') ) {
 // To override the apply link
 add_filter('bldm_apply_btn_link', function($current_listing_Apply_Link){
 	// Hardcoded link - replace with your desired URL
-	return 'https://example.com/apply-now';
+	return 'https://rentbutter.com/apply/marblestone';
 });
 
 // To override the listings page heading

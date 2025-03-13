@@ -50,69 +50,227 @@
 }
 
 /* Adjusting the layout of the search filters */
+.bldm-listing-filters {
+    background-color: #f8f9fa;
+    padding: 30px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
 .bldm-listing-filters form {
-    display: flex; /* Makes filters inline */
-    flex-wrap: nowrap; /* Prevents wrapping */
-    justify-content: space-between; /* Distributes filters evenly */
-    align-items: center; /* Vertically aligns filters */
-    padding: 20px; /* Adds some spacing */
-	gap: 20px;
-	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+/* Filter section styling */
+.filter-section {
+    flex: 1 1 200px;
+    margin-bottom: 15px;
+}
+
+.filter-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
 }
 
 /* Styling for filter inputs and selects */
 .bldm-listing-filters input, 
 .bldm-listing-filters select {
-    min-width: 120px; /* Ensures all inputs have consistent size */
-    padding: 8px; /* Adds spacing inside the inputs */
-    border: 1px solid #ccc; /* Adds a light border */
-    border-radius: 5px; /* Makes corners rounded */
-    font-size: 14px; /* Standardizes text size */
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.bldm-listing-filters input:focus,
+.bldm-listing-filters select:focus {
+    border-color: #1C4AA1;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(28, 74, 161, 0.1);
 }
 
 /* Styling for toggle buttons for Beds and Baths */
-.bldm-listing-filters .filter-toggle-group {
-    display: flex; /* Align buttons horizontally */
-    gap: 5px; /* Adds spacing between buttons */
+.filter-toggle-group {
+    display: flex;
+    gap: 5px;
+    width: 100%;
 }
 
-.bldm-listing-filters .filter-toggle-group button {
-    padding: 8px 15px;
-    border: 1px solid #ccc; /* Border for buttons */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #fff; /* Default background */
-    color: #333; /* Default text color */
+.filter-toggle-group button {
+    flex: 1;
+    padding: 10px 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #333;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    text-align: center;
 }
 
-.bldm-listing-filters .filter-toggle-group button.active {
-    background-color: #1C4AA1; /* Active state background */
-    color: #fff; /* Active state text color */
-    border-color: #1C4AA1; /* Active state border color */
+.filter-toggle-group button.active {
+    background-color: #1C4AA1;
+    color: #fff;
+    border-color: #1C4AA1;
 }
 
-.bldm-listing-filters .filter-toggle-group button:hover {
-    background-color: #E5E5E5; /* Hover background */
-    color: #333; /* Hover text color */
+.filter-toggle-group button:hover:not(.active) {
+    background-color: #f0f0f0;
 }
 
 /* Search button styling */
+.search-button-section {
+    flex: 1 1 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 .bldm-listing-filters input[type="submit"] {
-    padding: 10px 20px;
+    padding: 12px 30px;
     font-size: 16px;
+    font-weight: 600;
     color: #fff;
     background-color: #1C4AA1;
     border: none;
-    border-radius: 25px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    transition: all 0.3s ease;
+    min-width: 150px;
 }
 
-/* Hover effect */
 .bldm-listing-filters input[type="submit"]:hover {
-    transform: translateY(-3px); /* Moves button upward by 3 pixels */
+    background-color: #153a80;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+    .bldm-listing-filters {
+        padding: 20px 15px;
+    }
+    
+    .bldm-listing-filters form {
+        flex-direction: column;
+    }
+    
+    .filter-section {
+        flex: 1 1 100%;
+    }
+    
+    .search-button-section {
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .bldm-listing-filters input[type="submit"] {
+        width: 100%;
+    }
+    
+    /* Hide desktop form on mobile */
+    .desktop-filter-form {
+        display: none;
+    }
+    
+    /* Mobile filters button */
+    .mobile-filters-button {
+        display: inline-block;
+        background-color: #1C4AA1;
+        color: white;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    
+    /* Modal Container */
+    .filters-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+    
+    .filters-modal[aria-hidden="false"] {
+        display: flex;
+    }
+    
+    /* Modal Content */
+    .filters-modal-content {
+        background: white;
+        width: 90%;
+        max-width: 500px;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+    
+    /* Close Button */
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
+    }
+    
+    .filters-modal-content h3 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #333;
+    }
+    
+    /* Filter Input Styling in Modal */
+    .filters-modal-content .filter {
+        margin-bottom: 20px;
+    }
+    
+    .filters-modal-content .filter label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+}
+
+/* Desktop styles */
+@media only screen and (min-width: 769px) {
+    .mobile-filters-button,
+    .filters-modal {
+        display: none;
+    }
+}
+
 .bldm-main-listings-page .bldm-listing-item .bldm-list-img{
 	position: relative;
 }
@@ -378,117 +536,4 @@ ul.bldm-bed-bath-std {
 	display: flex;
   flex-wrap: wrap;
   gap: 30px;
-}
-/* Responsiveness */
-@media only screen and (max-width: 768px) {
-    .bldm-listing-filters h2 {
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-    .bldm-listing-filters input[type="submit"] {
-        padding: 5px 30px;
-        font-size: 16px;
-        margin: 0 10px;
-    }
-    .bldm-main-listings-page .bldm-all-listings {
-        padding: 1em;
-    }
-    .bldm-main-listings-page .bldm-listing-item {
-        width: 100%;
-    }
-
-    /* Mobile-specific Filters Adjustments */
-    /* .bldm-listing-filters form {
-        display: none; Hide the regular filters form */
-    }
-    .mobile-filters-button {
-        display: inline-block;
-        background-color: #1C4AA1; /* Matches your primary button color */
-        color: white;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%; /* Stretch button across screen */
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    /* Modal Container */
-    .filters-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: none; /* Hidden by default */
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-    }
-
-    .filters-modal[aria-hidden="false"] {
-        display: flex; /* Show modal when active */
-    }
-
-    /* Modal Content */
-    .filters-modal-content {
-        background: white;
-        width: 90%;
-        max-width: 500px;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        position: relative;
-        overflow-y: auto;
-        max-height: 90%;
-    }
-
-    /* Close Button */
-    .close-modal {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: none;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-    }
-
-    /* Filter Input Styling in Modal */
-    .filters-modal-content .filter {
-        margin-bottom: 15px;
-    }
-
-    .filters-modal-content .filter input,
-    .filters-modal-content .filter .filter-btn {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-
-    .filters-modal-content .filter-btn {
-        background-color: #f0f0f0;
-        cursor: pointer;
-    }
-
-    .filters-modal-content .filter-btn:hover {
-        background-color: #e0e0e0;
-    }
-
-    .filters-modal-content .bldm-prmry-btn {
-        width: 100%; /* Stretch the apply button */
-    }
-
-    /* Single Listing Adjustments */
-    .bldm-two-fifth,
-    .bldm-three-fifth {
-        width: 100%;
-        padding: 0 1em;
-    }
 }

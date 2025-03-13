@@ -87,7 +87,18 @@ if (!function_exists('bldm_pp_display_all_listings')) {
 			if ($bldm_page_sub_hdng) {
 				$render_html .= '<div class="bldm_page_sub_hdng">' . $bldm_page_sub_hdng . '</div>';
 			}
-			$render_html .= '<form method="post">';
+			
+			// Mobile filter button (only visible on small screens)
+			$render_html .= '<button class="mobile-filters-button" id="open-filters-modal">Filter Properties</button>';
+			
+			// Modal for mobile filters
+			$render_html .= '<div class="filters-modal" id="filters-modal" aria-hidden="true">';
+			$render_html .= '<div class="filters-modal-content">';
+			$render_html .= '<button class="close-modal" id="close-filters-modal">&times;</button>';
+			$render_html .= '<h3>Filter Properties</h3>';
+			
+			// Mobile filter form
+			$render_html .= '<form method="post" id="mobile-filter-form">';
 			
 			// Filters
 			$searched_beds = $searched_baths = $searched_rent_min = $searched_rent_max = 0;
@@ -99,71 +110,204 @@ if (!function_exists('bldm_pp_display_all_listings')) {
 			$bldm_filters_bath = get_option('bldm_filters_bath');
 			$bldm_filters_type = get_option('bldm_filters_type');
 			
-			// Filters
+			// Mobile Location Filter
 			if($bldm_filters_zip == 'show' && $location){
+				$render_html .= '<div class="filter">';
+				$render_html .= '<label for="mobile-location-filter">Location</label>';
 				if(isset($_POST['filters']['location'])){
 					$searched_loc = sanitize_text_field($_POST['filters']['location']);
-					$render_html .= '<input type="text" name="filters[location]" value="'.$searched_loc.'" placeholder="'.$location->{'placeholder'}.'">';
+					$render_html .= '<input type="text" id="mobile-location-filter" name="filters[location]" value="'.$searched_loc.'" placeholder="'.$location->{'placeholder'}.'">';
 				} else{
-					$render_html .= '<input type="text" name="filters[location]" placeholder="'.$location->{'placeholder'}.'">';
+					$render_html .= '<input type="text" id="mobile-location-filter" name="filters[location]" placeholder="'.$location->{'placeholder'}.'">';
 				}
+				$render_html .= '</div>';
 			}
 			
+			// Mobile Min Rent Filter
 			if($bldm_filters_minrent == 'show' && $rent_min){
+				$render_html .= '<div class="filter">';
+				$render_html .= '<label for="mobile-min-rent-filter">Minimum Rent</label>';
 				if(isset($_POST['filters']['rent-min'])){
 					$searched_rent_min = sanitize_text_field($_POST['filters']['rent-min']);
-					$render_html .= '<input type="number" name="filters[rent-min]" value="'.$searched_rent_min.'" step="100" min="0" placeholder="$ Min Rent">';
+					$render_html .= '<input type="number" id="mobile-min-rent-filter" name="filters[rent-min]" value="'.$searched_rent_min.'" step="100" min="0" placeholder="$ Min Rent">';
 				} else{
-					$render_html .= '<input type="number" name="filters[rent-min]" step="100" min="0" placeholder="$ Min Rent">';
+					$render_html .= '<input type="number" id="mobile-min-rent-filter" name="filters[rent-min]" step="100" min="0" placeholder="$ Min Rent">';
 				}
+				$render_html .= '</div>';
 			}
 			
+			// Mobile Max Rent Filter
 			if($bldm_filters_maxrent == 'show' && $rent_max){
+				$render_html .= '<div class="filter">';
+				$render_html .= '<label for="mobile-max-rent-filter">Maximum Rent</label>';
 				if(isset($_POST['filters']['rent-max'])){
 					$searched_rent_max = sanitize_text_field($_POST['filters']['rent-max']);
-					$render_html .= '<input type="number" name="filters[rent-max]" value="'.$searched_rent_max.'" step="100" min="0" placeholder="$ Max Rent">';
+					$render_html .= '<input type="number" id="mobile-max-rent-filter" name="filters[rent-max]" value="'.$searched_rent_max.'" step="100" min="0" placeholder="$ Max Rent">';
 				} else{
-					$render_html .= '<input type="number" name="filters[rent-max]" step="100" min="0" placeholder="$ Max Rent">';
+					$render_html .= '<input type="number" id="mobile-max-rent-filter" name="filters[rent-max]" step="100" min="0" placeholder="$ Max Rent">';
 				}
+				$render_html .= '</div>';
 			}
 			
+			// Mobile Bedrooms Filter
 			if($bldm_filters_bed == 'show' && $filters_bedrooms){
+				$render_html .= '<div class="filter">';
+				$render_html .= '<label for="mobile-bedrooms-filter">Bedrooms</label>';
 				$correct_beds = str_replace("0+", "Beds", stripslashes($filters_bedrooms->innertext));
 				if(isset($_POST['filters']['bedrooms'])){
 					$searched_beds = $selected = sanitize_text_field($_POST['filters']['bedrooms']);
 					$str_to_replace = 'value="'.$selected.'"';
 					$str_to_replace_by = 'value="'.$selected.'" selected="selected"';
-					$render_html .= '<select name="filters[bedrooms]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_beds).'</select>';
+					$render_html .= '<select id="mobile-bedrooms-filter" name="filters[bedrooms]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_beds).'</select>';
 				} else{
-					$render_html .= '<select name="filters[bedrooms]">'.$correct_beds.'</select>';
+					$render_html .= '<select id="mobile-bedrooms-filter" name="filters[bedrooms]">'.$correct_beds.'</select>';
 				}
+				$render_html .= '</div>';
 			}
 			
+			// Mobile Bathrooms Filter
 			if($bldm_filters_bath == 'show' && $filters_bathrooms){
+				$render_html .= '<div class="filter">';
+				$render_html .= '<label for="mobile-bathrooms-filter">Bathrooms</label>';
 				$correct_baths = str_replace("0+", "Baths", stripslashes($filters_bathrooms->innertext));
 				if(isset($_POST['filters']['bathrooms'])){
 					$searched_baths = $selected = sanitize_text_field($_POST['filters']['bathrooms']);
 					$str_to_replace = 'value="'.$selected.'"';
 					$str_to_replace_by = 'value="'.$selected.'" selected="selected"';
-					$render_html .= '<select name="filters[bathrooms]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_baths).'</select>';
+					$render_html .= '<select id="mobile-bathrooms-filter" name="filters[bathrooms]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_baths).'</select>';
 				} else{
-					$render_html .= '<select name="filters[bathrooms]">'.$correct_baths.'</select>';
+					$render_html .= '<select id="mobile-bathrooms-filter" name="filters[bathrooms]">'.$correct_baths.'</select>';
 				}
+				$render_html .= '</div>';
 			}
 			
+			// Mobile Property Type Filter
 			if($bldm_filters_type == 'show' && $filters_type){
+				$render_html .= '<div class="filter">';
+				$render_html .= '<label for="mobile-property-type-filter">Property Type</label>';
 				$correct_type = stripslashes($filters_type->innertext);
 				if(isset($_POST['filters']['propertyTypeFilter'])){
 					$searched_type = $selected = sanitize_text_field($_POST['filters']['propertyTypeFilter']);
 					$str_to_replace = 'value="'.$selected.'"';
 					$str_to_replace_by = 'value="'.$selected.'" selected="selected"';
-					$render_html .= '<select name="filters[propertyTypeFilter]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_type).'</select>';
+					$render_html .= '<select id="mobile-property-type-filter" name="filters[propertyTypeFilter]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_type).'</select>';
 				} else{
-					$render_html .= '<select name="filters[propertyTypeFilter]">'.$correct_type.'</select>';
+					$render_html .= '<select id="mobile-property-type-filter" name="filters[propertyTypeFilter]">'.$correct_type.'</select>';
 				}
+				$render_html .= '</div>';
 			}
 			
-			$render_html .= '<input type="submit" value="Search" name="fltr-submt">';
+			// Mobile Search Button
+			$render_html .= '<input type="submit" class="bldm-prmry-btn" value="Apply Filters" name="fltr-submt">';
+			
+			$render_html .= '</form>';
+			$render_html .= '</div>'; // End modal content
+			$render_html .= '</div>'; // End modal
+			
+			// Desktop filter form
+			$render_html .= '<form method="post" class="desktop-filter-form">';
+			
+			// Filters
+			$searched_beds = $searched_baths = $searched_rent_min = $searched_rent_max = 0;
+			$searched_loc = $searched_type = '';
+			$bldm_filters_zip = get_option('bldm_filters_zip');
+			$bldm_filters_minrent = get_option('bldm_filters_minrent');
+			$bldm_filters_maxrent = get_option('bldm_filters_maxrent');
+			$bldm_filters_bed = get_option('bldm_filters_bed');
+			$bldm_filters_bath = get_option('bldm_filters_bath');
+			$bldm_filters_type = get_option('bldm_filters_type');
+			
+			// Location Filter
+			if($bldm_filters_zip == 'show' && $location){
+				$render_html .= '<div class="filter-section location-filter">';
+				$render_html .= '<label for="location-filter">Location</label>';
+				if(isset($_POST['filters']['location'])){
+					$searched_loc = sanitize_text_field($_POST['filters']['location']);
+					$render_html .= '<input type="text" id="location-filter" name="filters[location]" value="'.$searched_loc.'" placeholder="'.$location->{'placeholder'}.'">';
+				} else{
+					$render_html .= '<input type="text" id="location-filter" name="filters[location]" placeholder="'.$location->{'placeholder'}.'">';
+				}
+				$render_html .= '</div>';
+			}
+			
+			// Min Rent Filter
+			if($bldm_filters_minrent == 'show' && $rent_min){
+				$render_html .= '<div class="filter-section min-rent-filter">';
+				$render_html .= '<label for="min-rent-filter">Minimum Rent</label>';
+				if(isset($_POST['filters']['rent-min'])){
+					$searched_rent_min = sanitize_text_field($_POST['filters']['rent-min']);
+					$render_html .= '<input type="number" id="min-rent-filter" name="filters[rent-min]" value="'.$searched_rent_min.'" step="100" min="0" placeholder="$ Min Rent">';
+				} else{
+					$render_html .= '<input type="number" id="min-rent-filter" name="filters[rent-min]" step="100" min="0" placeholder="$ Min Rent">';
+				}
+				$render_html .= '</div>';
+			}
+			
+			// Max Rent Filter
+			if($bldm_filters_maxrent == 'show' && $rent_max){
+				$render_html .= '<div class="filter-section max-rent-filter">';
+				$render_html .= '<label for="max-rent-filter">Maximum Rent</label>';
+				if(isset($_POST['filters']['rent-max'])){
+					$searched_rent_max = sanitize_text_field($_POST['filters']['rent-max']);
+					$render_html .= '<input type="number" id="max-rent-filter" name="filters[rent-max]" value="'.$searched_rent_max.'" step="100" min="0" placeholder="$ Max Rent">';
+				} else{
+					$render_html .= '<input type="number" id="max-rent-filter" name="filters[rent-max]" step="100" min="0" placeholder="$ Max Rent">';
+				}
+				$render_html .= '</div>';
+			}
+			
+			// Bedrooms Filter
+			if($bldm_filters_bed == 'show' && $filters_bedrooms){
+				$render_html .= '<div class="filter-section bedrooms-filter">';
+				$render_html .= '<label for="bedrooms-filter">Bedrooms</label>';
+				$correct_beds = str_replace("0+", "Beds", stripslashes($filters_bedrooms->innertext));
+				if(isset($_POST['filters']['bedrooms'])){
+					$searched_beds = $selected = sanitize_text_field($_POST['filters']['bedrooms']);
+					$str_to_replace = 'value="'.$selected.'"';
+					$str_to_replace_by = 'value="'.$selected.'" selected="selected"';
+					$render_html .= '<select id="bedrooms-filter" name="filters[bedrooms]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_beds).'</select>';
+				} else{
+					$render_html .= '<select id="bedrooms-filter" name="filters[bedrooms]">'.$correct_beds.'</select>';
+				}
+				$render_html .= '</div>';
+			}
+			
+			// Bathrooms Filter
+			if($bldm_filters_bath == 'show' && $filters_bathrooms){
+				$render_html .= '<div class="filter-section bathrooms-filter">';
+				$render_html .= '<label for="bathrooms-filter">Bathrooms</label>';
+				$correct_baths = str_replace("0+", "Baths", stripslashes($filters_bathrooms->innertext));
+				if(isset($_POST['filters']['bathrooms'])){
+					$searched_baths = $selected = sanitize_text_field($_POST['filters']['bathrooms']);
+					$str_to_replace = 'value="'.$selected.'"';
+					$str_to_replace_by = 'value="'.$selected.'" selected="selected"';
+					$render_html .= '<select id="bathrooms-filter" name="filters[bathrooms]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_baths).'</select>';
+				} else{
+					$render_html .= '<select id="bathrooms-filter" name="filters[bathrooms]">'.$correct_baths.'</select>';
+				}
+				$render_html .= '</div>';
+			}
+			
+			// Property Type Filter
+			if($bldm_filters_type == 'show' && $filters_type){
+				$render_html .= '<div class="filter-section property-type-filter">';
+				$render_html .= '<label for="property-type-filter">Property Type</label>';
+				$correct_type = stripslashes($filters_type->innertext);
+				if(isset($_POST['filters']['propertyTypeFilter'])){
+					$searched_type = $selected = sanitize_text_field($_POST['filters']['propertyTypeFilter']);
+					$str_to_replace = 'value="'.$selected.'"';
+					$str_to_replace_by = 'value="'.$selected.'" selected="selected"';
+					$render_html .= '<select id="property-type-filter" name="filters[propertyTypeFilter]">'.str_replace($str_to_replace,$str_to_replace_by,$correct_type).'</select>';
+				} else{
+					$render_html .= '<select id="property-type-filter" name="filters[propertyTypeFilter]">'.$correct_type.'</select>';
+				}
+				$render_html .= '</div>';
+			}
+			
+			// Search Button
+			$render_html .= '<div class="search-button-section">';
+			$render_html .= '<input type="submit" value="Search Properties" name="fltr-submt">';
+			$render_html .= '</div>';
 			
 			$render_html .= '</form></div>';
 			
@@ -364,5 +508,77 @@ if (!function_exists('bldm_pp_display_all_listings')) {
 		
 		}
 		
+		// Add JavaScript for mobile filter modal
+		add_action('wp_footer', 'bldm_filter_modal_js');
+		function bldm_filter_modal_js() {
+			?>
+			<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				// Get modal elements
+				const modal = document.getElementById('filters-modal');
+				const openModalBtn = document.getElementById('open-filters-modal');
+				const closeModalBtn = document.getElementById('close-filters-modal');
+				
+				// Check if elements exist (they might not if we're not on the listings page)
+				if (modal && openModalBtn && closeModalBtn) {
+					// Open modal
+					openModalBtn.addEventListener('click', function() {
+						modal.setAttribute('aria-hidden', 'false');
+						document.body.style.overflow = 'hidden'; // Prevent scrolling
+					});
+					
+					// Close modal
+					closeModalBtn.addEventListener('click', function() {
+						modal.setAttribute('aria-hidden', 'true');
+						document.body.style.overflow = ''; // Restore scrolling
+					});
+					
+					// Close modal when clicking outside content
+					modal.addEventListener('click', function(e) {
+						if (e.target === modal) {
+							modal.setAttribute('aria-hidden', 'true');
+							document.body.style.overflow = '';
+						}
+					});
+					
+					// Sync filter values between desktop and mobile forms
+					const desktopForm = document.querySelector('.desktop-filter-form');
+					const mobileForm = document.getElementById('mobile-filter-form');
+					
+					if (desktopForm && mobileForm) {
+						// Sync from desktop to mobile when opening modal
+						openModalBtn.addEventListener('click', function() {
+							syncFormValues(desktopForm, mobileForm);
+						});
+						
+						// Sync from mobile to desktop when submitting mobile form
+						mobileForm.addEventListener('submit', function() {
+							syncFormValues(mobileForm, desktopForm);
+						});
+					}
+					
+					// Function to sync form values
+					function syncFormValues(sourceForm, targetForm) {
+						const sourceInputs = sourceForm.querySelectorAll('input:not([type="submit"]), select');
+						
+						sourceInputs.forEach(function(input) {
+							const inputName = input.getAttribute('name');
+							if (inputName) {
+								const targetInput = targetForm.querySelector('[name="' + inputName + '"]');
+								if (targetInput) {
+									if (input.type === 'checkbox' || input.type === 'radio') {
+										targetInput.checked = input.checked;
+									} else {
+										targetInput.value = input.value;
+									}
+								}
+							}
+						});
+					}
+				}
+			});
+			</script>
+			<?php
+		}
 	}
 }
