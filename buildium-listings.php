@@ -1069,14 +1069,14 @@ if(is_admin()){
 										Background: 
 										<input type="text" name="bldm_listings_apply_bg" value="<?php echo $bldm_listings_apply_bg; ?>" class="bldm-listings-color" />
 									</span>
-									<span class="bldm-adm-more-options" style="<?php echo ($bldm_listings_display_detail == 'show')?'':'display:none'; ?>" >
+									<span class="bldm-adm-more-options" style="<?php echo ($bldm_listings_display_apply == 'show')?'':'display:none'; ?>" >
 										<?php $bldm_listings_apply_hover_color = get_option('bldm_listings_apply_hover_color');
 											if(!$bldm_listings_apply_hover_color){ $bldm_listings_apply_hover_color = '#ffffff'; }
 										?>
 										Hover Text Color:
 										<input type="text" name="bldm_listings_apply_hover_color" value="<?php echo $bldm_listings_apply_hover_color; ?>" class="bldm-listings-color" />
 									</span>
-									<span class="bldm-adm-more-options" style="<?php echo ($bldm_listings_display_detail == 'show')?'':'display:none'; ?>" >
+									<span class="bldm-adm-more-options" style="<?php echo ($bldm_listings_display_apply == 'show')?'':'display:none'; ?>" >
 										<?php $bldm_listings_apply_hover_bg = get_option('bldm_listings_apply_hover_bg'); ?>
 										Hover Background: 
 										<input type="text" name="bldm_listings_apply_hover_bg" value="<?php echo $bldm_listings_apply_hover_bg; ?>" class="bldm-listings-color" />

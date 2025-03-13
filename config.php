@@ -6,12 +6,8 @@ if ( ! defined('ABSPATH') ) {
 
 // To override the apply link
 add_filter('bldm_apply_btn_link', function($current_listing_Apply_Link){
-	$bldm_custom_apply_lnk = get_option('bldm_custom_apply_lnk');
-	if($bldm_custom_apply_lnk){
-		return $bldm_custom_apply_lnk;
-	} else{
-		return $current_listing_Apply_Link;
-	}
+	// Hardcoded link - replace with your desired URL
+	return 'https://example.com/apply-now';
 });
 
 // To override the listings page heading
